@@ -5,9 +5,14 @@ from telethon import TelegramClient, events, Button
 from telethon.errors import SessionPasswordNeededError, PhoneCodeExpiredError, PhoneCodeInvalidError
 
 # --- الإعدادات الأساسية ---
-API_ID = 16633582
-API_HASH = '4cfb235928de9f4c5247c5696ca9953a'
-BOT_TOKEN = '8307632276:AAFrV1DxgJjUWxbcyS5Cqd4UENC8B2Ih9So'
+API_ID = os.getenv('API_ID')
+API_HASH = os.getenv('API_HASH')
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+
+if not API_ID or not API_HASH or not BOT_TOKEN:
+    raise RuntimeError("Missing API_ID, API_HASH, or BOT_TOKEN env vars")
+
+API_ID = int(API_ID)
 
 # تخزين البيانات في الذاكرة
 users_db = {}
