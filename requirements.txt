@@ -1,3 +1,4 @@
+telethon
 pyrogram
-pytgcalls
 python-telegram-bot
+pytgcalls
