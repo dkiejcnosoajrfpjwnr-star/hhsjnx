@@ -23,6 +23,26 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        # تثبيت الأدوات الضرورية للنظام أولاً
+        sudo apt-get update
+        sudo apt-get install -y build-essential ffmpeg
+        
+        # التثبيت بالترتيب لتجنب التعارض
+        pip install telethon
+        pip install pyrogram
+        pip install python-telegram-bot
+        # تثبيت pytgcalls بدون فرض قيود إصدار صارمة
+        pip install pytgcalls
+        
+        # إذا كان لديك ملف requirements.txt، تأكد أنه لا يحتوي على قيود صارمة
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
+    - name: Run Bot
+      run: |
+        python main.py
+ name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
         sudo apt-get update
         sudo apt-get install -y build-essential ffmpeg libffi-dev libssl-dev
         pip install telethon pytgcalls pyrogram python-telegram-bot
