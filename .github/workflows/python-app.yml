@@ -23,11 +23,17 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # تثبيت أدوات النظام الضرورية أولاً
+        
+        # 1. تثبيت أدوات النظام التي تحتاجها مكتبات الصوت
         sudo apt-get update
         sudo apt-get install -y build-essential ffmpeg
-        # تثبيت المكتبات بدون قيود إصدارات قديمة
-        pip install pyrogram pytgcalls python-telegram-bot
+        
+        # 2. التثبيت المتسلسل (كما ينصح موقع pip لحل التعارضات)
+        pip install pyrogram
+        pip install pytgcalls
+        pip install python-telegram-bot
+        
+        # 3. تثبيت باقي المكتبات (بدون قيود صارمة في requirements.txt)
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         
     - name: Run Bot
