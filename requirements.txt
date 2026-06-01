@@ -1,5 +1,3 @@
-pyrogram==2.0.106
-tgcalls==2.0.0
-ntgcalls
-pytgcalls==2.1.0
-python-telegram-bot==21.9
+pyrogram
+pytgcalls
+python-telegram-bot
